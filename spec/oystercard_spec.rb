@@ -12,7 +12,7 @@ describe Oystercard do
 
   context "#top_up" do
     it "should add money to balance" do
-      expect { subject.top_up(5)}.to change { subject.balance }.by 5 
+      expect { subject.top_up(5) }.to change { subject.balance }.by 5 
     end
 
     it "should raise an error if the balance exceeds limit" do
@@ -29,13 +29,13 @@ describe Oystercard do
       expect(subject).to be_in_journey
     end
 
-    it 'should raise an error when card is empty' do
+    it "should raise an error when card is empty" do
       expect { subject.touch_in(entry_station) }.to raise_error("Error: Not enough money.")
     end
   end
 
   context "#touch_out" do
-    it "touch out should be out of journey" do
+    it "should be out of journey once we touch out " do
       subject.top_up(10)
       subject.touch_in(entry_station)
       subject.touch_out(exit_station)
@@ -56,7 +56,7 @@ describe Oystercard do
       expect(subject.entry_station).to eq(entry_station)
     end
   
-    it 'should change the entry station to be nil when touched out' do
+    it "should change the entry station to be nil when touched out" do
       subject.top_up(10)
       subject.touch_in(entry_station)
       subject.touch_out(exit_station)
